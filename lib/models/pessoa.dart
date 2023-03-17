@@ -1,6 +1,16 @@
-class Pessoa {
-  String nome = "João";
-  int idade = 30;
+import 'package:flutter/material.dart';
 
-  Pessoa();
+class Pessoa with ChangeNotifier {
+  String nome;
+  int idade;
+
+  Pessoa({
+    this.nome = "João",
+    this.idade = 30,
+  });
+
+  void incrementaIdade() {
+    idade++;
+    notifyListeners();
+  }
 }

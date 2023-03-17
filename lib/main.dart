@@ -4,7 +4,7 @@ import 'package:provider_app/models/pessoa.dart';
 
 void main() {
   runApp(
-    Provider(
+    ChangeNotifierProvider(
       create: (context) {
         return Pessoa();
       },
@@ -30,6 +30,11 @@ class MainApp extends StatelessWidget {
             '${(context).select((Pessoa p) => p.nome)} tem ${(context).select((Pessoa p) => p.idade)} anos de idade.',
             style: const TextStyle(fontSize: 30),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () =>
+              Provider.of<Pessoa>(context, listen: false).incrementaIdade(),
+          child: const Icon(Icons.add),
         ),
       ),
     );
